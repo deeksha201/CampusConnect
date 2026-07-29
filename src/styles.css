@@ -1,0 +1,115 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Campus Connect — Cyber-academic neon design system.
+ * All colors defined as semantic tokens. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --shadow-glow-primary: 0 0 20px color-mix(in oklab, var(--primary) 40%, transparent);
+  --shadow-glow-secondary: 0 0 20px color-mix(in oklab, var(--secondary) 40%, transparent);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Dark cyber-academic — the only theme */
+  --background: oklch(0.13 0.005 260);         /* #0A0A0B */
+  --foreground: oklch(1 0 0);
+  --surface: oklch(0.18 0.006 260);            /* #161618 */
+  --surface-2: oklch(0.22 0.008 260);
+  --card: oklch(0.18 0.006 260);
+  --card-foreground: oklch(1 0 0);
+  --popover: oklch(0.18 0.006 260);
+  --popover-foreground: oklch(1 0 0);
+
+  --primary: oklch(0.62 0.19 275);             /* indigo #6366F1 */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.79 0.15 180);           /* teal #2DD4BF */
+  --secondary-foreground: oklch(0.13 0.005 260);
+  --danger: oklch(0.7 0.19 15);                /* rose #FB7185 */
+  --danger-foreground: oklch(1 0 0);
+  --destructive: oklch(0.7 0.19 15);
+  --destructive-foreground: oklch(1 0 0);
+
+  --muted: oklch(0.22 0.008 260);
+  --muted-foreground: oklch(0.72 0.01 260);    /* zinc-400ish #A1A1AA */
+  --accent: oklch(0.22 0.008 260);
+  --accent-foreground: oklch(1 0 0);
+
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.62 0.19 275 / 60%);
+}
+
+/* Keep .dark selector as an alias in case any shadcn primitive checks for it. */
+.dark {
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    color-scheme: dark;
+    background-color: var(--color-background);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-primary) 40%, transparent);
+    color: var(--color-foreground);
+  }
+}
